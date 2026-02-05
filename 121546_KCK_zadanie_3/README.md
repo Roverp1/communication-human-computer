@@ -41,6 +41,12 @@ System Zarządzania Ocenami
 
 Portal webowy dla nauczycieli do zarządzania ocenami studentów. Trzy główne ekrany pokrywają typowy przepływ pracy: logowanie, wprowadzanie ocen, przeglądanie raportów.
 
+## Metoda tworzenia szkiców
+
+Szkice zostały wygenerowane programistycznie przy użyciu Python + biblioteki PIL/Pillow. Są to graficzne wireframe'y pokazujące strukturę interfejsu użytkownika bez nadmiernych detali wizualnych. Każdy szkic prezentuje układ kontrolek, hierarchię informacji i przepływ interakcji użytkownika.
+
+Szkice nie są kodem HTML/CSS - są to obrazy graficzne przedstawiające mockupy interfejsu, podobnie jak powstałyby w narzędziach typu Figma, Sketch czy Adobe XD.
+
 ## Specyfika portalu www
 
 Portal zaprojektowany z uwzględnieniem zasad projektowania stron internetowych:
@@ -72,25 +78,26 @@ Portal zaprojektowany z uwzględnieniem zasad projektowania stron internetowych:
 
 ## Szkic 1: Ekran logowania
 
-**Plik:** `screenshots/system-zarzadzania-ocenami.png`
+**Plik:** `wireframes/szkic-1-logowanie.png`
 
-Standardowy ekran logowania z centralnym modalem.
+Graficzny szkic ekranu logowania z centralnym panelem. Wireframe pokazuje strukturę interfejsu bez nadmiernych detali wizualnych.
 
 **Kontrolki (6):**
 
 1. Pole tekstowe (nazwa użytkownika)
 2. Pole hasła
 3. Checkbox (zapamiętaj mnie)
-4. Przycisk "Anuluj"
-5. Przycisk "Zaloguj się"
-6. Link (zapomniałeś hasła)
+4. Link (zapomniałeś hasła)
+5. Przycisk "Anuluj"
+6. Przycisk "Zaloguj się"
 
 **Zastosowane zasady:**
 
-- Przycisk głównej akcji po prawej, anuluj po lewej (konwencja)
-- Czytelna hierarchia wizualna
-- Link odzyskiwania hasła widoczny ale nie dominujący
-- Status połączenia w stopce
+- Przycisk głównej akcji po prawej, anuluj po lewej (konwencja webowa)
+- Wyraźna hierarchia wizualna - centralny panel z białym tłem
+- Link odzyskiwania hasła dostępny ale nie dominujący
+- Status połączenia w stopce (informacja zwrotna)
+- Minimalistyczny design skupiający uwagę na logowaniu
 
 <br>
 
@@ -98,9 +105,9 @@ Standardowy ekran logowania z centralnym modalem.
 
 ## Szkic 2: Wprowadzanie oceny
 
-**Plik:** `screenshots/wprowadzanie-oceny.png`
+**Plik:** `wireframes/szkic-2-wprowadzanie-oceny.png`
 
-Formularz do dodawania nowych ocen studentom.
+Graficzny szkic formularza do dodawania ocen. Wireframe pokazuje układ pól formularza, paska narzędzi i przycisków akcji.
 
 **Kontrolki (11):**
 
@@ -111,19 +118,21 @@ Formularz do dodawania nowych ocen studentom.
 5. Dropdown wyboru przedmiotu
 6. Dropdown wyboru oceny
 7. Date picker (data wystawienia)
-8. Pole tekstowe (komentarz)
+8. Pole tekstowe wieloliniowe (komentarz)
 9. Przycisk "Wyczyść"
 10. Przycisk "Anuluj"
 11. Przycisk "Zapisz ocenę"
 
 **Zastosowane zasady:**
 
+- Menu nawigacyjne u góry (spójność)
 - Dropdowny zamiast wolnego tekstu (zapobieganie błędom)
-- Wymagane pola oznaczone gwiazdką
+- Wymagane pola oznaczone gwiazdką (*)
 - Status formularza w stopce (widoczność stanu systemu)
 - Cofnij/Ponów dla kontroli użytkownika
 - Teksty pomocnicze pod polami
-- Główna akcja wyróżniona kolorem
+- Główna akcja wyróżniona kolorem niebieskim
+- Dwukolumnowy układ dla efektywnego wykorzystania przestrzeni
 
 <br>
 
@@ -131,9 +140,9 @@ Formularz do dodawania nowych ocen studentom.
 
 ## Szkic 3: Raport ocen studentów
 
-**Plik:** `screenshots/raport-ocen-studentow.png`
+**Plik:** `wireframes/szkic-3-raport-studentow.png`
 
-Tabela z ocenami wszystkich studentów, filtry i opcje eksportu.
+Graficzny szkic tabeli raportowej z ocenami studentów. Wireframe pokazuje strukturę danych, filtry, opcje eksportu i paginację.
 
 **Kontrolki (15+):**
 
@@ -145,21 +154,25 @@ Tabela z ocenami wszystkich studentów, filtry i opcje eksportu.
 6. Dropdown filtra (przedmiot)
 7. Dropdown filtra (okres)
 8. Dropdown filtra (status)
-9. Tabela danych (7 kolumn, sortowalna)
-10. Ikony edycji (przy każdym wierszu)
-11. Ikony usuwania (przy każdym wierszu)
-12. Przycisk "Poprzednia" (paginacja)
-13. Przyciski numerów stron (1-6)
-14. Przycisk "Następna" (paginacja)
+9. Tabela danych (7 kolumn, 5 wierszy widocznych)
+10. Ikony akcji edycji i usuwania w kolumnie "Akcje"
+11. Przycisk "Poprzednia" (paginacja)
+12. Przyciski numerów stron (1-6)
+13. Przycisk "Następna" (paginacja)
+14. Panel statystyk (łącznie ocen)
+15. Panel statystyk (średnia)
+16. Panel statystyk (zdawalność)
 
 **Zastosowane zasady:**
 
-- Statystyki na górze (łącznie 45 ocen, średnia 4.12, zdawalność 93%)
-- Elastyczność (wiele opcji eksportu)
+- Menu nawigacyjne u góry (spójność z innymi ekranami)
+- Statystyki w osobnych panelach na górze (KPI widoczne od razu)
+- Elastyczność (wiele opcji eksportu i filtrów)
 - Rozpoznawanie zamiast przypominania (ikony przy akcjach)
-- Paginacja dla dużych zbiorów
+- Paginacja dla dużych zbiorów danych
 - Informacje o stanie w stopce (liczba rekordów, ostatnia aktualizacja)
-- Czytelne nagłówki kolumn z wskaźnikami sortowania
+- Czytelne nagłówki kolumn
+- Widoczne oznaczenia akcji dla każdego rekordu
 
 <br>
 
