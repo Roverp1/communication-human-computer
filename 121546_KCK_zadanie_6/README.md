@@ -378,21 +378,21 @@ System AR czerpie z zaawansowanych wyświetlaczy HUD używanych w lotnictwie woj
 
 ## Podsumowanie
 
-Zaprojektowany system AR dla uniwersyteckiej centrali telefonicznej łączy inspiracje z zaawansowanych systemów awionicznych HUD z praktycznymi potrzebami środowiska akademickiego.
+System AR dla uniwersyteckiej centrali łączy awioniczne HUD z potrzebami środowiska akademickiego.
 
-**Osiągnięcia:**
-✓ 5 innowacyjnych funkcji AR szczegółowo opisanych  
-✓ Kompletna makieta wizualna wygenerowana programowo  
-✓ 5 diagramów sekwencji dla wszystkich przypadków użycia  
-✓ Profesjonalny raport PDF z dokumentacją  
-✓ Inspiracja awionicznymi HUD (celownik, radar, panele)  
-✓ Kod źródłowy Python (PIL/Pillow) dostępny  
+**Zrobione:**
+- 5 funkcji AR szczegółowo opisanych  
+- Makieta wygenerowana programowo  
+- 5 diagramów sekwencji  
+- Raport PDF  
+- Inspiracja awionicznym HUD (celownik, radar, panele)  
+- Kod źródłowy Python (PIL/Pillow)  
 
 **Kluczowe cechy:**
-- Intuicyjny interfejs HUD w stylu lotniczym
+- Interfejs HUD w stylu lotniczym
 - Real-time overlays kontekstowe
-- Kodowanie kolorami semantycznymi
+- Kodowanie kolorami
 - Minimalizm i czytelność
-- Skalowalność i rozszerzalność
+- Da się rozszerzyć
 
-System demonstruje potencjał AR w usprawnianiu codziennej komunikacji w organizacjach edukacyjnych, redukując bariery językowe, optymalizując routing połączeń i zapewniając pełną transparentność operacyjną.
+System pokazuje potencjał AR w usprawnianiu komunikacji w organizacjach edukacyjnych: redukuje bariery językowe, optymalizuje routing, zapewnia transparentność operacyjną.

@@ -89,45 +89,45 @@ nix-shell -p python3 --run "python3 hicks_law_analysis.py"
 ## Zastosowane zasady UX
 
 ### 1. Prawo Hicka (Hick's Law)
-✓ Ograniczona liczba opcji na każdym etapie (4-6)
-✓ Filtry zmniejszają widoczne opcje
-✓ Paginacja dla dużych katalogów
+- Ograniczona liczba opcji na każdym etapie (4-6)
+- Filtry zmniejszają widoczne opcje
+- Paginacja dla dużych katalogów
 
-### 2. Prawo Millera (Miller's Law - 7±2)
-✓ Produkty: 6 widocznych jednocześnie
-✓ Płatności: 5 metod
-✓ Dostawa: 4 opcje
-✓ Menu: 5 kroków
+### 2. Prawo Millera (Miller's Law 7±2)
+- Produkty: 6 widocznych jednocześnie
+- Płatności: 5 metod
+- Dostawa: 4 opcje
+- Menu: 5 kroków
 
 ### 3. Prawo Fittsa (Fitts's Law)
-✓ Duże przyciski głównych akcji (padding 16-20px)
-✓ Odpowiednie odstępy między elementami (15-25px)
-✓ Minimalna wielkość touch target: 40×40px
-✓ Najważniejsze elementy większe i bliżej użytkownika
+- Duże przyciski głównych akcji (padding 16-20px)
+- Odpowiednie odstępy (15-25px)
+- Minimalna wielkość: 40×40px
+- Najważniejsze elementy większe i bliżej
 
-### 4. Próg Doherty'ego (Doherty Threshold - <400ms)
-✓ Natychmiastowa reakcja na kliknięcia (< 100ms)
-✓ Animacje trwają 200-300ms
-✓ Instant visual feedback przy wszystkich akcjach
+### 4. Próg Doherty'ego (Doherty Threshold <400ms)
+- Reakcja na kliknięcia < 100ms
+- Animacje 200-300ms
+- Instant visual feedback
 
 ### 5. Efekt Von Restorffa (Von Restorff Effect)
-✓ Bestseller wyróżniony żółtym gradientem + badge "BESTSELLER"
-✓ Polecana metoda płatności z badge'em "POLECANE"
-✓ Najszybsza dostawa z czerwonym badge'em "NAJSZYBSZA"
-✓ Darmowa dostawa w zielonym kolorze "GRATIS"
+- Bestseller z żółtym gradientem + badge
+- Polecana płatność z badge'em
+- Najszybsza dostawa czerwony badge
+- Darmowa dostawa zielony
 
-### 6. Prawo Jednolitego Połączenia (Law of Uniform Connection)
-✓ Powiązane elementy zgrupowane wizualnie
-✓ Filtry w jednym kontenerze
-✓ Spójne kolory dla podobnych akcji
-✓ Sekcje wyraźnie oddzielone
+### 6. Prawo Jednolitego Połączenia
+- Powiązane elementy zgrupowane wizualnie
+- Filtry w jednym kontenerze
+- Spójne kolory dla podobnych akcji
+- Sekcje wyraźnie oddzielone
 
 ### 7. Zasady Jakoba (Jakob's Law)
-✓ Standardowy przepływ e-commerce
-✓ Ikona koszyka w prawym górnym rogu
-✓ Pasek postępu u góry
-✓ Przyciski "Dalej" po prawej, "Wróć" po lewej
-✓ Znane konwencje kolorystyczne
+- Standardowy przepływ e-commerce
+- Ikona koszyka w prawym górnym rogu
+- Pasek postępu u góry
+- Przyciski "Dalej" po prawej, "Wróć" po lewej
+- Znane konwencje kolorystyczne
 
 ## Kluczowe cechy implementacji
 
@@ -192,15 +192,15 @@ nix-shell -p wkhtmltopdf --run 'wkhtmltopdf --enable-local-file-access documenta
 
 ## Zgodność z wymaganiami
 
-✓ **Minimum 4 etapy** - Zrealizowano 5 etapów
-✓ **Wizualne mockupy** - Interaktywne HTML/CSS dla każdego etapu
-✓ **Obliczenia Prawa Hicka** - Szczegółowa analiza z różnymi wartościami n
-✓ **Prawo Millera (7±2)** - Wszystkie etapy w zakresie 4-6 opcji
-✓ **Prawo Fittsa** - Duże elementy interaktywne, odpowiednie odstępy
-✓ **Próg Doherty'ego** - Reakcje < 400ms, animacje < 300ms
-✓ **Efekt Von Restorffa** - Wyróżnione elementy kluczowe
-✓ **Prawo Jednolitego Połączenia** - Grupowanie powiązanych elementów
-✓ **Zasady Jakoba** - Standardowe konwencje e-commerce
+- **Min 4 etapy** - Zrob 5 etapów
+- **Wizualne mockupy** - HTML/CSS dla każdego etapu
+- **Obliczenia Prawa Hicka** - Analiza z różnymi wartościami n
+- **Prawo Millera (7±2)** - Wszystkie etapy 4-6 opcji
+- **Prawo Fittsa** - Duże elementy, odpowiednie odstępy
+- **Próg Doherty'ego** - Reakcje <400ms, animacje <300ms
+- **Efekt Von Restorffa** - Wyróżnione elementy kluczowe
+- **Prawo Jednolitego Połączenia** - Grupowanie powiązanych elementów
+- **Zasady Jakoba** - Standardowe konwencje e-commerce
 
 ## Technologie
 

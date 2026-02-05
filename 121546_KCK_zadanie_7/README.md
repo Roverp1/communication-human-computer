@@ -38,18 +38,18 @@ nix-shell -p python3Packages.tkinter --run "python3 color_changer.py"
 
 ---
 
-## Wymagania - Spełnione ✓
+## Wymagania
 
 | Wymaganie | Status | Implementacja |
 |-----------|--------|---------------|
-| GUI z zmianą koloru okna | ✓ | ColorChangerApp z dynamicznym tłem |
-| Min. 5 kolorów | ✓ | 8 predefiniowanych + nieskończoność przez picker |
-| Min. 2 kontrolki | ✓ | 3 typy: buttons, listbox, color picker |
-| Programowanie obiektowe | ✓ | 8 klas z dziedziczeniem i enkapsulacją |
-| Event loop | ✓ | Tkinter mainloop() |
-| Event handlers | ✓ | onClick, onMouseMove, onPaint, onResize |
-| Event queue | ✓ | Wewnętrzna kolejka Tkinter |
-| Callbacks | ✓ | EventHandler z Observer pattern |
+| GUI z zmianą koloru okna | done | ColorChangerApp z dynamicznym tłem |
+| Min. 5 kolorów | done | 8 predefiniowanych + nieskończoność przez picker |
+| Min. 2 kontrolki | done | 3 typy: buttons, listbox, color picker |
+| Programowanie obiektowe | done | 8 klas z dziedziczeniem i enkapsulacją |
+| Event loop | done | Tkinter mainloop() |
+| Event handlers | done | onClick, onMouseMove, onPaint, onResize |
+| Event queue | done | Wewnętrzna kolejka Tkinter |
+| Callbacks | done | EventHandler z Observer pattern |
 
 ---
 
@@ -265,12 +265,12 @@ Scenariusze testowe:
 
 ## Podsumowanie
 
-Aplikacja w pełni demonstruje event-driven programming:
+Aplikacja pokazuje event-driven programming w praktyce:
 
-✓ Wszystkie wymagania przekroczone  
-✓ Czysty, dobrze skomentowany kod OOP  
-✓ Profesjonalna architektura extensible  
-✓ Obsługa wielu typów zdarzeń  
-✓ User-friendly interface z feedbackiem  
+- Wszystkie wymagania przekroczone  
+- Czysty, skomentowany kod OOP  
+- Architektura da się rozszerzać  
+- Obsługa wielu typów zdarzeń  
+- Interface z feedbackiem  
 
-Event-driven architecture pozwala na reaktywne aplikacje reagujące na akcje użytkownika zamiast działania w sztywnej sekwencji.
+Event-driven architecture pozwala budować reaktywne aplikacje reagujące na akcje użytkownika zamiast działać w sztywnej sekwencji.

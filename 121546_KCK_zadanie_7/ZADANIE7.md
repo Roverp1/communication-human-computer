@@ -363,18 +363,18 @@ self.bind("<<ListboxSelect>>", self._handle_selection)
 
 ---
 
-## Demonstrowane koncepty
+## Zaimplementowane koncepty
 
-✓ Event Loop (mainloop)  
-✓ Event Queue (Tkinter internal)  
-✓ Event Handlers (onClick, onMouseMove, onPaint, onResize)  
-✓ Callbacks (funkcje jako argumenty)  
-✓ Observer Pattern (register/trigger)  
-✓ Event Objects (ColorChangeEvent)  
-✓ Minimum 5 kolorów (8 predefiniowanych + nieskończoność przez picker)  
-✓ Minimum 2 kontrolki (3: buttons, listbox, picker)  
-✓ OOP (dziedziczenie, enkapsulacja, polimorfizm)  
-✓ Zmiana koloru okna  
+- Event Loop (mainloop)  
+- Event Queue (Tkinter internal)  
+- Event Handlers (onClick, onMouseMove, onPaint, onResize)  
+- Callbacks (funkcje jako argumenty)  
+- Observer Pattern (register/trigger)  
+- Event Objects (ColorChangeEvent)  
+- 8 kolorów + picker (wymagane: 5)  
+- 3 typy kontrolek (wymagane: 2)  
+- OOP (dziedziczenie, enkapsulacja, polimorfizm)  
+- Zmiana koloru okna  
 
 <br>
 
@@ -413,12 +413,12 @@ Architektura pozwala na łatwe rozszerzenia:
 
 ## Podsumowanie
 
-Aplikacja demonstruje pełną event-driven architecture:
+Aplikacja pokazuje pełną event-driven architecture:
 - Wszystkie wymagania spełnione
-- Czysty, dobrze skomentowany kod
+- Czysty, skomentowany kod
 - Proper OOP design
-- Extensible architecture
-- Multiple event types handled
-- Professional GUI with feedback
+- Da się rozszerzać
+- Obsługa wielu typów zdarzeń
+- GUI z feedbackiem
 
-Event-driven programming pozwala na reaktywne, user-friendly aplikacje gdzie system reaguje na akcje użytkownika zamiast działać w rigid sequence.
+Event-driven programming tworzy reaktywne, user-friendly aplikacje gdzie system reaguje na akcje użytkownika zamiast działać w rigid sequence.

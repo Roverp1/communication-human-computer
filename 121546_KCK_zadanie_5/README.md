@@ -301,31 +301,30 @@ System i użytkownik naprzemiennie wykonują akcje:
 
 Zaprojektowany system automatycznej centrali telefonicznej spełnia wszystkie wymagania zadania:
 
-### ✅ Zrealizowane Wymagania
+### Wymagania
 
-1. **Trzy scenariusze** o rosnącej złożoności zostały zaprojektowane
-2. **Weryfikacja tożsamości** została zaimplementowana dla wrażliwych działów
-3. **Relacja <<extend>>** została wykorzystana dla punktów rozszerzenia
-4. **Wszystkie pięć zasad Conversational Design** zostało zastosowanych
-5. **Obsługa dwóch języków** (polski i angielski) została zrealizowana
-6. **Bezpieczeństwo danych** użytkowników zostało zapewnione
+1. Trzy scenariusze o rosnącej złożoności
+2. Weryfikacja tożsamości dla wrażliwych działów
+3. Relacja <<extend>> dla punktów rozszerzenia
+4. Pięć zasad Conversational Design
+5. Obsługa polskiego i angielskiego
+6. Ochrona danych użytkowników
 
-### 💡 Kluczowe Innowacje
+### Co działa dobrze
 
-- **Rozszerzone menu** po weryfikacji umożliwia precyzyjniejsze kierowanie połączeń
-- **Walidacja formatu** danych wejściowych zapobiega błędom
-- **Limit prób** weryfikacji chroni przed nieautoryzowanym dostępem
-- **Świadomość kontekstu** poprawia doświadczenie użytkownika
+- Rozszerzone menu po weryfikacji pozwala na precyzyjne kierowanie
+- Walidacja formatu łapie błędy wcześnie
+- Limit prób blokuje nieautoryzowany dostęp
+- Kontekst rozmowy jest pamiętany
 
-### 🚀 Możliwe Rozszerzenia
+### Możliwe rozszerzenia
 
-System może być rozbudowany o:
-- Dodatkowe języki (np. ukraiński, niemiecki)
-- Rozpoznawanie mowy zamiast DTMF (tonów)
-- Inteligentne kierowanie oparte na analizie zapytania
-- Integrację z systemami CRM
-- Callback w przypadku długiego oczekiwania
-- Obsługę komunikatów SMS z linkiem do formularza online
+- Więcej języków (ukraiński, niemiecki)
+- Rozpoznawanie mowy zamiast tonów
+- Kierowanie oparte na analizie zapytania
+- Integracja z CRM
+- Callback przy długim oczekiwaniu
+- SMS z linkiem do formularza online
 
 ---
 
@@ -346,15 +345,15 @@ System może być rozbudowany o:
 
 ## Podsumowanie
 
-Projekt demonstruje kompleksowe podejście do projektowania głosowego interfejsu użytkownika z uwzględnieniem:
+Projekt pokazuje jak zaprojektować głosowy interfejs z naciskiem na:
 
-1. **Użyteczności** - system jest intuicyjny i łatwy w obsłudze
-2. **Bezpieczeństwa** - wrażliwe działy są chronione weryfikacją
-3. **Skalowalności** - łatwo dodać nowe działy i języki
-4. **Dostępności** - obsługa wielojęzyczna
-5. **Efektywności** - minimalna liczba kroków do osiągnięcia celu
+1. Użyteczność - intuicyjny i łatwy w obsłudze
+2. Bezpieczeństwo - wrażliwe działy chronione weryfikacją
+3. Skalowalność - łatwo dodać nowe działy i języki
+4. Dostępność - obsługa wielu języków
+5. Efektywność - minimum kroków do celu
 
-System może być wdrożony w rzeczywistym środowisku uniwersyteckim po dodaniu integracji z odpowiednimi systemami telefonicznymi i bazami danych.
+Można to wdrożyć w prawdziwym uniwersytecie po dodaniu integracji z systemami telefonii i bazami danych.
 
 ---
 
