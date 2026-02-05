@@ -27,10 +27,10 @@ Celem zadania jest zaprojektowanie automatycznej centrali telefonicznej dla uniw
 
 ### Wymagania Funkcjonalne
 
-- ✅ Obsługa dwóch języków: polski i angielski
-- ✅ Weryfikacja tożsamości dla wrażliwych działów (PESEL + data urodzenia)
-- ✅ Wykorzystanie relacji `<<extend>>` dla punktów rozszerzenia
-- ✅ Zastosowanie zasad Conversational Design:
+- Obsługa dwóch języków: polski i angielski
+- Weryfikacja tożsamości dla wrażliwych działów (PESEL + data urodzenia)
+- Wykorzystanie relacji `<<extend>>` dla punktów rozszerzenia
+- Zastosowanie zasad Conversational Design:
   - **Cooperation** (współpraca)
   - **Goal orientation** (orientacja na cel)
   - **Context awareness** (świadomość kontekstu)
@@ -224,10 +224,10 @@ Relacja `<<extend>>` w UML reprezentuje opcjonalne rozszerzenie podstawowego prz
 ### Zalety Zastosowania Relacji <<extend>>
 
 To podejście pozwala na:
-- ✅ Separację logiki weryfikacji od podstawowego przepływu
-- ✅ Łatwe dodawanie nowych działów wymagających weryfikacji
-- ✅ Utrzymanie czytelności diagramów
-- ✅ Reużycie logiki weryfikacji w różnych scenariuszach
+- Separację logiki weryfikacji od podstawowego przepływu
+- Łatwe dodawanie nowych działów wymagających weryfikacji
+- Utrzymanie czytelności diagramów
+- Reużycie logiki weryfikacji w różnych scenariuszach
 
 ---
 
@@ -289,8 +289,8 @@ System i użytkownik naprzemiennie wykonują akcje:
 |-------|-------------|-------------|-------------|
 | **Dział** | Księgowość | Dział Planowania | Dziekanat |
 | **Język** | Polski | Angielski | Polski |
-| **Weryfikacja** | ❌ Nie | ✅ Tak | ✅ Tak |
-| **Rozszerzone menu** | ❌ Nie | ❌ Nie | ✅ Tak |
+| **Weryfikacja** | Nie | Tak | Tak |
+| **Rozszerzone menu** | Nie | Nie | Tak |
 | **Liczba kroków** | 5 | 11 | 13 |
 | **Złożoność** | Niska | Średnia | Wysoka |
 | **Punkty rozszerzenia** | 0 | 1 | 1 |
