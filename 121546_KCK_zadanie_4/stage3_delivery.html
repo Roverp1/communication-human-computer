@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etap 3: Metoda Dostawy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: #2d3748;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .cart-icon {
+            background: #48bb78;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 40px;
+            background: #f7fafc;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            color: #2d3748;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-number {
+            background: #667eea;
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .step.completed .step-number {
+            background: #48bb78;
+            color: white;
+        }
+
+        .step.completed .step-number::after {
+            content: '✓';
+        }
+
+        .step-label {
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .step.active .step-label {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .delivery-section h2 {
+            font-size: 28px;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2d3748;
+            margin: 30px 0 15px 0;
+        }
+
+        /* Miller's Law: 4 delivery options (within 7±2) */
+        .delivery-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Fitts's Law: Large clickable delivery options */
+        .delivery-option {
+            border: 3px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+        }
+
+        .delivery-option:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .delivery-option.selected {
+            border-color: #48bb78;
+            background: #f0fff4;
+            border-width: 4px;
+        }
+
+        .delivery-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .delivery-icon {
+            width: 60px;
+            height: 60px;
+            background: #edf2f7;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .delivery-info {
+            flex: 1;
+        }
+
+        .delivery-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .delivery-time {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 3px;
+        }
+
+        .delivery-right {
+            text-align: right;
+        }
+
+        .delivery-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .delivery-price.free {
+            color: #48bb78;
+        }
+
+        /* Von Restorff Effect: Fastest delivery highlighted */
+        .delivery-option.express {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border-color: #fc8181;
+        }
+
+        .express-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* Law of Uniform Connection: Address form fields grouped */
+        .address-form {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .order-summary {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .order-summary h3 {
+            font-size: 22px;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+
+        .summary-item.product {
+            flex-direction: column;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .product-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-name-small {
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .summary-highlight {
+            color: #48bb78;
+            font-weight: bold;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d3748;
+            padding-top: 15px;
+            border-top: 3px solid #e2e8f0;
+            margin-top: 20px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+            grid-column: 1 / -1;
+        }
+
+        .btn-secondary {
+            padding: 12px 30px;
+            background: #cbd5e0;
+            color: #2d3748;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #a0aec0;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 16px 50px;
+            background: #48bb78;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.5);
+        }
+
+        .btn-primary:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .info-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #ebf8ff;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #2c5282;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛒 TechStore - Sklep Elektroniki</h1>
+            <div class="cart-icon">🛍️ Koszyk (1)</div>
+        </header>
+
+        <div class="progress-bar">
+            <div class="step completed">
+                <div class="step-number"></div>
+                <div class="step-label">Wybór produktu</div>
+            </div>
+            <div class="step completed">
+                <div class="step-number"></div>
+                <div class="step-label">Płatność</div>
+            </div>
+            <div class="step active">
+                <div class="step-number">3</div>
+                <div class="step-label">Dostawa</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-label">Podsumowanie</div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-label">Finalizacja</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="delivery-section">
+                <h2>Wybierz metodę dostawy</h2>
+                <p class="subtitle">Dostarczymy Twój produkt w najwygodniejszy sposób</p>
+
+                <!-- Miller's Law: 4 delivery options -->
+                <div class="delivery-options">
+                    <div class="delivery-option" onclick="selectDelivery(this, 'standard', 0)">
+                        <div class="delivery-left">
+                            <div class="delivery-icon">📦</div>
+                            <div class="delivery-info">
+                                <div class="delivery-name">Dostawa standardowa</div>
+                                <div class="delivery-time">3-5 dni roboczych</div>
+                            </div>
+                        </div>
+                        <div class="delivery-right">
+                            <div class="delivery-price free">GRATIS</div>
+                        </div>
+                    </div>
+
+                    <div class="delivery-option express" onclick="selectDelivery(this, 'express', 29)">
+                        <div class="delivery-left">
+                            <div class="delivery-icon">🚀</div>
+                            <div class="delivery-info">
+                                <div class="delivery-name">
+                                    Dostawa ekspresowa
+                                    <span class="express-badge">NAJSZYBSZA</span>
+                                </div>
+                                <div class="delivery-time">Dostawa jutro przed 12:00</div>
+                            </div>
+                        </div>
+                        <div class="delivery-right">
+                            <div class="delivery-price">29 zł</div>
+                        </div>
+                    </div>
+
+                    <div class="delivery-option" onclick="selectDelivery(this, 'courier', 15)">
+                        <div class="delivery-left">
+                            <div class="delivery-icon">🚚</div>
+                            <div class="delivery-info">
+                                <div class="delivery-name">Kurier</div>
+                                <div class="delivery-time">1-2 dni robocze</div>
+                            </div>
+                        </div>
+                        <div class="delivery-right">
+                            <div class="delivery-price">15 zł</div>
+                        </div>
+                    </div>
+
+                    <div class="delivery-option" onclick="selectDelivery(this, 'pickup', 0)">
+                        <div class="delivery-left">
+                            <div class="delivery-icon">🏪</div>
+                            <div class="delivery-info">
+                                <div class="delivery-name">Odbiór w punkcie</div>
+                                <div class="delivery-time">Paczkomaty InPost (1-2 dni)</div>
+                            </div>
+                        </div>
+                        <div class="delivery-right">
+                            <div class="delivery-price free">GRATIS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Adres dostawy</div>
+
+                <div class="address-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Imię *</label>
+                            <input type="text" placeholder="Jan" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nazwisko *</label>
+                            <input type="text" placeholder="Kowalski" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Ulica i numer *</label>
+                        <input type="text" placeholder="ul. Przykładowa 123/45" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Kod pocztowy *</label>
+                            <input type="text" placeholder="00-000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Miasto *</label>
+                            <input type="text" placeholder="Warszawa" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Numer telefonu *</label>
+                        <input type="tel" placeholder="+48 123 456 789" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Uwagi do zamówienia (opcjonalne)</label>
+                        <textarea rows="3" placeholder="Dodatkowe informacje dla kuriera..."></textarea>
+                    </div>
+                </div>
+
+                <div class="info-badge">
+                    <span style="font-size: 24px;">ℹ️</span>
+                    <div>
+                        <strong>Bezpieczna przesyłka</strong><br>
+                        Wszystkie przesyłki są ubezpieczone i śledzone w czasie rzeczywistym
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn-secondary" onclick="window.location.href='stage2_payment.html'">← Wróć</button>
+                    <button class="btn-primary" id="nextBtn" disabled>Przejdź do podsumowania →</button>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h3>Podsumowanie zamówienia</h3>
+                
+                <div class="summary-item product">
+                    <div class="product-detail">
+                        <span class="product-name-small">MacBook Pro 14"</span>
+                        <span style="font-weight: bold;">8 999 zł</span>
+                    </div>
+                    <div style="font-size: 13px; color: #718096; margin-top: 8px;">
+                        M3 Pro • 16GB RAM • 512GB SSD
+                    </div>
+                </div>
+
+                <div class="summary-item">
+                    <span>Cena produktu:</span>
+                    <span>8 999 zł</span>
+                </div>
+                <div class="summary-item">
+                    <span>Metoda płatności:</span>
+                    <span class="summary-highlight">Karta płatnicza</span>
+                </div>
+                <div class="summary-item">
+                    <span>Dostawa:</span>
+                    <span id="deliveryCost" class="summary-highlight">Wybierz opcję</span>
+                </div>
+                <div class="summary-item">
+                    <span>VAT (23%):</span>
+                    <span>2 070 zł</span>
+                </div>
+
+                <div class="summary-total">
+                    <span>Razem:</span>
+                    <span id="totalPrice" style="color: #667eea;">8 999 zł</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedDeliveryMethod = null;
+        let deliveryCost = 0;
+        const basePrice = 8999;
+
+        function selectDelivery(element, method, cost) {
+            // Doherty Threshold: Instant response
+            document.querySelectorAll('.delivery-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            element.classList.add('selected');
+            selectedDeliveryMethod = method;
+            deliveryCost = cost;
+
+            // Update summary
+            const deliveryCostElement = document.getElementById('deliveryCost');
+            if (cost === 0) {
+                deliveryCostElement.textContent = 'GRATIS';
+                deliveryCostElement.style.color = '#48bb78';
+            } else {
+                deliveryCostElement.textContent = cost + ' zł';
+                deliveryCostElement.style.color = '#4a5568';
+            }
+
+            // Update total
+            const totalPrice = basePrice + cost;
+            document.getElementById('totalPrice').textContent = totalPrice.toLocaleString('pl-PL') + ' zł';
+
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (selectedDeliveryMethod) {
+                setTimeout(() => {
+                    window.location.href = 'stage4_summary.html';
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
