@@ -1,0 +1,72 @@
+@startuml
+title Scenario 3: Connect with Registrar (Dziekanat) with Verification
+skinparam responseMessageBelowArrow true
+skinparam boxPadding 10
+
+actor "Użytkownik" as User
+participant "Centrala\nTelefoniczna" as System
+
+== Language Selection ==
+User -> System: Dzwoni do centrali
+activate System
+System -> User: "Witamy w centrali Uniwersytetu.\nWelcome to University exchange.\nDla języka polskiego naciśnij 1.\nFor English press 2."
+User -> System: Naciska 1 (Polski)
+System -> User: "Wybrałeś język polski."
+
+== Main Menu ==
+System -> User: "Menu główne:\n1 - Księgowość\n2 - Dział Planowania\n3 - Dziekanat\n4 - Centrala\n0 - Powtórz menu"
+User -> System: Naciska 3 (Dziekanat)
+
+== Identity Verification (Extension Point) ==
+ref over System, User: <<extend>> Weryfikacja Tożsamości
+
+System -> User: "Dziekanat wymaga weryfikacji.\nProszę wprowadzić numer PESEL\nzakończony kratką."
+User -> System: Wprowadza PESEL (11 cyfr) + #
+System -> System: Waliduje format PESEL
+
+alt Błędny format PESEL
+    System -> User: "Nieprawidłowy format PESEL.\nProszę spróbować ponownie."
+    User -> System: Wprowadza PESEL + #
+    System -> System: Waliduje format
+end
+
+alt Format poprawny
+    System -> User: "Proszę wprowadzić datę urodzenia\nw formacie DDMMRRRR zakończoną kratką."
+    User -> System: Wprowadza datę (np. 25081998) + #
+    System -> System: Weryfikuje PESEL z datą urodzenia
+    
+    alt Weryfikacja udana
+        System -> User: "Weryfikacja zakończona sukcesem."
+        
+        == Extended Menu for Verified Users ==
+        System -> User: "Dziekanat - menu:\n1 - Sprawy studenckie\n2 - Dokumenty i zaświadczenia\n3 - Konsultant\n0 - Powrót do menu głównego"
+        User -> System: Naciska 2 (Dokumenty)
+        
+        == Connection ==
+        System -> User: "Łączę z działem dokumentów.\nProszę czekać..."
+        System -> System: Przekierowuje do odpowiedniego działu
+        System -> User: "Dziękujemy za połączenie."
+        
+    else Weryfikacja nieudana (3 próby)
+        System -> User: "Weryfikacja nieudana.\nZ powodów bezpieczeństwa\npołączenie zostanie zakończone."
+        System -> User: "Do widzenia."
+        System -> System: Kończy połączenie
+    end
+end
+
+deactivate System
+
+note right of System
+  Extension point: Weryfikacja tożsamości
+  Rozszerzone menu po weryfikacji
+  
+  Zasady projektowania konwersacyjnego:
+  - Współpraca: Przewodnik krok po kroku
+  - Orientacja na cel: Dodatkowe opcje
+  - Świadomość kontekstu: Język + weryfikacja
+  - Zwięzłość: Jasne komunikaty
+  - Zmiana ról: System-użytkownik
+  - Bezpieczeństwo: Limit prób weryfikacji
+end note
+
+@enduml

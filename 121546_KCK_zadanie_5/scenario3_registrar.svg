@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="1600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="black" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="green" />
+    </marker>
+  </defs>
+  <rect width="800" height="1600" fill="white"/>
+  <text x="400" y="30" font-size="18" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">Scenario 3: Connect with Registrar (Dziekanat)</text>
+  <rect x="90" y="80" width="120" height="40" fill="#E6F3FF" stroke="black" stroke-width="2" rx="5"/>
+  <text x="150" y="105" font-size="12" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">Użytkownik</text>
+  <rect x="580" y="80" width="140" height="40" fill="#E6F3FF" stroke="black" stroke-width="2" rx="5"/>
+  <text x="650" y="98" font-size="12" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">
+  <tspan x="650" dy="0">Centrala</tspan>
+  <tspan x="650" dy="14">Telefoniczna</tspan>
+  </text>
+  <line x1="150" y1="130" x2="150" y2="1500" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="650" y1="130" x2="650" y2="1500" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="400" y="150" font-size="12" font-style="italic" font-weight="bold" text-anchor="middle" fill="blue" font-family="Arial, sans-serif">=== Language Selection ===</text>
+  <line x1="150" y1="180" x2="650" y2="180" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="175" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Dzwoni do centrali</text>
+  <line x1="650" y1="220" x2="150" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="215" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Witamy... / Welcome... Naciśnij 1/2</text>
+  <line x1="150" y1="260" x2="650" y2="260" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="255" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Naciska 1 (Polski)</text>
+  <line x1="650" y1="300" x2="150" y2="300" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="295" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Wybrałeś język polski.</text>
+  <text x="400" y="350" font-size="12" font-style="italic" font-weight="bold" text-anchor="middle" fill="blue" font-family="Arial, sans-serif">=== Main Menu ===</text>
+  <line x1="650" y1="380" x2="150" y2="380" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="375" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Menu główne: 1-Księgowość, 2-Dział Planowania, 3-Dziekanat...</text>
+  <line x1="150" y1="420" x2="650" y2="420" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="415" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Naciska 3 (Dziekanat)</text>
+  <text x="400" y="470" font-size="12" font-style="italic" font-weight="bold" text-anchor="middle" fill="red" font-family="Arial, sans-serif">=== &lt;&lt;extend&gt;&gt; Weryfikacja Tożsamości ===</text>
+  <rect x="50" y="490" width="700" height="380" fill="none" stroke="purple" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="60" y="505" font-size="10" font-style="italic" fill="purple" font-family="Arial, sans-serif">[Proces weryfikacji]</text>
+  <line x1="650" y1="500" x2="150" y2="500" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="495" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Dziekanat wymaga weryfikacji. Wprowadź PESEL + #</text>
+  <line x1="150" y1="540" x2="650" y2="540" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="535" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Wprowadza PESEL (11 cyfr) + #</text>
+  <path d="M 650 580 L 710 580 L 710 600 L 650 600" stroke="gray" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="715" y="590" font-size="9" font-family="Arial, sans-serif">Waliduje</text>
+  <text x="715" y="602" font-size="9" font-family="Arial, sans-serif">format PESEL</text>
+  <line x1="650" y1="620" x2="150" y2="620" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="615" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Proszę wprowadzić datę urodzenia DDMMRRRR + #</text>
+  <line x1="150" y1="660" x2="650" y2="660" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="655" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Wprowadza datę (np. 25081998) + #</text>
+  <path d="M 650 700 L 710 700 L 710 720 L 650 720" stroke="gray" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="715" y="710" font-size="9" font-family="Arial, sans-serif">Weryfikuje</text>
+  <text x="715" y="722" font-size="9" font-family="Arial, sans-serif">PESEL + data</text>
+  <line x1="650" y1="740" x2="150" y2="740" stroke="green" stroke-width="2" marker-end="url(#arrowhead-green)"/>
+  <text x="400" y="735" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Weryfikacja zakończona sukcesem.</text>
+  <text x="400" y="790" font-size="12" font-style="italic" font-weight="bold" text-anchor="middle" fill="darkgreen" font-family="Arial, sans-serif">=== Extended Menu for Verified Users ===</text>
+  <line x1="650" y1="820" x2="150" y2="820" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="815" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Dziekanat - menu: 1-Sprawy studenckie, 2-Dokumenty...</text>
+  <line x1="150" y1="860" x2="650" y2="860" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="855" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Naciska 2 (Dokumenty)</text>
+  <text x="400" y="910" font-size="12" font-style="italic" font-weight="bold" text-anchor="middle" fill="blue" font-family="Arial, sans-serif">=== Connection ===</text>
+  <line x1="650" y1="940" x2="150" y2="940" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="935" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Łączę z działem dokumentów. Proszę czekać...</text>
+  <path d="M 650 980 L 710 980 L 710 1000 L 650 1000" stroke="gray" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="715" y="990" font-size="9" font-family="Arial, sans-serif">Przekierowuje</text>
+  <text x="715" y="1002" font-size="9" font-family="Arial, sans-serif">do działu</text>
+  <line x1="650" y1="1020" x2="150" y2="1020" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="1015" font-size="10" text-anchor="middle" font-family="Arial, sans-serif">Dziękujemy za połączenie.</text>
+  <rect x="400" y="1080" width="380" height="150" fill="#FFFACD" stroke="orange" stroke-width="2" rx="5"/>
+  <text x="410" y="1100" font-size="9" font-family="Arial, sans-serif">Extension point: Weryfikacja tożsamości</text>
+  <text x="410" y="1114" font-size="9" font-family="Arial, sans-serif">Rozszerzone menu po weryfikacji</text>
+  <text x="410" y="1128" font-size="9" font-family="Arial, sans-serif"></text>
+  <text x="410" y="1142" font-size="9" font-family="Arial, sans-serif">Zasady projektowania konwersacyjnego:</text>
+  <text x="410" y="1156" font-size="9" font-family="Arial, sans-serif">• Współpraca: Przewodnik krok po kroku</text>
+  <text x="410" y="1170" font-size="9" font-family="Arial, sans-serif">• Orientacja na cel: Dodatkowe opcje</text>
+  <text x="410" y="1184" font-size="9" font-family="Arial, sans-serif">• Świadomość kontekstu: Język + weryfikacja</text>
+  <text x="410" y="1198" font-size="9" font-family="Arial, sans-serif">• Zwięzłość: Jasne komunikaty</text>
+  <text x="410" y="1212" font-size="9" font-family="Arial, sans-serif">• Bezpieczeństwo: Limit prób</text>
+</svg>

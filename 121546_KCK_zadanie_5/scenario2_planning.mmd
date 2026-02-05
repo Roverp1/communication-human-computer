@@ -1,0 +1,43 @@
+sequenceDiagram
+    title Scenario 2: Connect with Planning Department with Identity Verification
+    
+    actor User as Użytkownik
+    participant System as Centrala<br/>Telefoniczna
+    
+    Note over User,System: Language Selection
+    User->>+System: Calls the exchange
+    System->>User: Witamy w centrali Uniwersytetu.<br/>Welcome to University exchange.<br/>Dla języka polskiego naciśnij 1.<br/>For English press 2.
+    User->>System: Presses 2 (English)
+    System->>User: You selected English.
+    
+    Note over User,System: Main Menu
+    System->>User: Main menu:<br/>1 - Directory<br/>2 - Planning Department<br/>3 - Registrar<br/>4 - Operator<br/>0 - Repeat menu
+    User->>System: Presses 2 (Planning Department)
+    
+    Note over User,System: <<extend>> Identity Verification
+    System->>User: Planning Department requires verification.<br/>Please enter your PESEL number<br/>followed by hash.
+    User->>System: Enters PESEL (11 digits) + #
+    System->>System: Validates PESEL format
+    
+    alt PESEL format valid
+        System->>User: Please enter your date of birth<br/>in format DDMMYYYY followed by hash.
+        User->>System: Enters date (e.g., 15031995) + #
+        System->>System: Verifies PESEL + date of birth
+        
+        alt Verification successful
+            System->>User: Verification successful.
+            
+            Note over User,System: Connection
+            System->>User: Connecting to Planning Department.<br/>Please hold...
+            System->>System: Routes call to Planning Department
+            System->>-User: Thank you for calling.
+        else Verification failed
+            System->>User: Verification failed.<br/>Returning to main menu.
+            System->>User: Main menu:<br/>1 - Directory<br/>2 - Planning Department...
+        end
+    else PESEL format invalid
+        System->>User: Invalid PESEL format.<br/>Please try again.
+        User->>System: Enters PESEL + #
+    end
+    
+    Note right of System: Extension point: Identity verification<br/>Required for sensitive department access<br/><br/>Conversational principles:<br/>- Cooperation: Step-by-step guidance<br/>- Context: Language maintained<br/>- Brevity: Clear instructions<br/>- Error handling with retry option

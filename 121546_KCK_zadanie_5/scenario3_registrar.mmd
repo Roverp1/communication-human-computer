@@ -1,0 +1,49 @@
+sequenceDiagram
+    title Scenario 3: Connect with Registrar (Dziekanat) with Verification
+    
+    actor User as Użytkownik
+    participant System as Centrala<br/>Telefoniczna
+    
+    Note over User,System: Language Selection
+    User->>+System: Dzwoni do centrali
+    System->>User: Witamy w centrali Uniwersytetu.<br/>Welcome to University exchange.<br/>Dla języka polskiego naciśnij 1.<br/>For English press 2.
+    User->>System: Naciska 1 (Polski)
+    System->>User: Wybrałeś język polski.
+    
+    Note over User,System: Main Menu
+    System->>User: Menu główne:<br/>1 - Księgowość<br/>2 - Dział Planowania<br/>3 - Dziekanat<br/>4 - Centrala<br/>0 - Powtórz menu
+    User->>System: Naciska 3 (Dziekanat)
+    
+    Note over User,System: <<extend>> Weryfikacja Tożsamości
+    System->>User: Dziekanat wymaga weryfikacji.<br/>Proszę wprowadzić numer PESEL<br/>zakończony kratką.
+    User->>System: Wprowadza PESEL (11 cyfr) + #
+    System->>System: Waliduje format PESEL
+    
+    alt Format poprawny
+        System->>User: Proszę wprowadzić datę urodzenia<br/>w formacie DDMMRRRR zakończoną kratką.
+        User->>System: Wprowadza datę (np. 25081998) + #
+        System->>System: Weryfikuje PESEL z datą urodzenia
+        
+        alt Weryfikacja udana
+            System->>User: Weryfikacja zakończona sukcesem.
+            
+            Note over User,System: Extended Menu for Verified Users
+            System->>User: Dziekanat - menu:<br/>1 - Sprawy studenckie<br/>2 - Dokumenty i zaświadczenia<br/>3 - Konsultant<br/>0 - Powrót do menu głównego
+            User->>System: Naciska 2 (Dokumenty)
+            
+            Note over User,System: Connection
+            System->>User: Łączę z działem dokumentów.<br/>Proszę czekać...
+            System->>System: Przekierowuje do odpowiedniego działu
+            System->>-User: Dziękujemy za połączenie.
+            
+        else Weryfikacja nieudana (3 próby)
+            System->>User: Weryfikacja nieudana.<br/>Z powodów bezpieczeństwa<br/>połączenie zostanie zakończone.
+            System->>User: Do widzenia.
+            System->>System: Kończy połączenie
+        end
+    else Błędny format PESEL
+        System->>User: Nieprawidłowy format PESEL.<br/>Proszę spróbować ponownie.
+        User->>System: Wprowadza PESEL + #
+    end
+    
+    Note right of System: Extension point: Weryfikacja tożsamości<br/>Rozszerzone menu po weryfikacji<br/><br/>Zasady projektowania konwersacyjnego:<br/>- Współpraca: Przewodnik krok po kroku<br/>- Orientacja na cel: Dodatkowe opcje<br/>- Świadomość kontekstu: Język + weryfikacja<br/>- Zwięzłość: Jasne komunikaty<br/>- Zmiana ról: System-użytkownik<br/>- Bezpieczeństwo: Limit prób weryfikacji

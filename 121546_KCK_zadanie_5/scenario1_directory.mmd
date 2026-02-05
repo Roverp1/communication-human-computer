@@ -1,0 +1,22 @@
+sequenceDiagram
+    title Scenario 1: Connect with Directory (Księgowość)
+    
+    actor User as Użytkownik
+    participant System as Centrala<br/>Telefoniczna
+    
+    Note over User,System: Language Selection
+    User->>+System: Dzwoni do centrali
+    System->>User: Witamy w centrali Uniwersytetu.<br/>Welcome to University exchange.<br/>Dla języka polskiego naciśnij 1.<br/>For English press 2.
+    User->>System: Naciska 1 (Polski)
+    System->>User: Wybrałeś język polski.
+    
+    Note over User,System: Main Menu
+    System->>User: Menu główne:<br/>1 - Księgowość<br/>2 - Dział Planowania<br/>3 - Dziekanat<br/>4 - Centrala<br/>0 - Powtórz menu
+    User->>System: Naciska 1 (Księgowość)
+    
+    Note over User,System: Connection
+    System->>User: Łączę z Księgowością.<br/>Proszę czekać...
+    System->>System: Routing call to Directory department
+    System->>-User: Dziękujemy za połączenie.
+    
+    Note right of System: Conversational principles applied:<br/>- Cooperation: Clear menu options<br/>- Goal orientation: Direct path<br/>- Context awareness: Language choice<br/>- Brevity: Concise messages<br/>- Turn-taking: Wait for user input

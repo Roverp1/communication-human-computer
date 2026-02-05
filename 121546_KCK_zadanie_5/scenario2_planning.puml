@@ -1,0 +1,61 @@
+@startuml
+title Scenario 2: Connect with Planning Department with Identity Verification
+skinparam responseMessageBelowArrow true
+skinparam boxPadding 10
+
+actor "Użytkownik" as User
+participant "Centrala\nTelefoniczna" as System
+
+== Language Selection ==
+User -> System: Calls the exchange
+activate System
+System -> User: "Witamy w centrali Uniwersytetu.\nWelcome to University exchange.\nDla języka polskiego naciśnij 1.\nFor English press 2."
+User -> System: Presses 2 (English)
+System -> User: "You selected English."
+
+== Main Menu ==
+System -> User: "Main menu:\n1 - Directory\n2 - Planning Department\n3 - Registrar\n4 - Operator\n0 - Repeat menu"
+User -> System: Presses 2 (Planning Department)
+
+== Identity Verification (Extension Point) ==
+ref over System, User: <<extend>> Identity Verification
+
+System -> User: "Planning Department requires verification.\nPlease enter your PESEL number\nfollowed by hash."
+User -> System: Enters PESEL (11 digits) + #
+System -> System: Validates PESEL format
+
+alt PESEL format invalid
+    System -> User: "Invalid PESEL format.\nPlease try again."
+    User -> System: Enters PESEL + #
+end
+
+System -> User: "Please enter your date of birth\nin format DDMMYYYY followed by hash."
+User -> System: Enters date (e.g., 15031995) + #
+System -> System: Verifies PESEL + date of birth
+
+alt Verification successful
+    System -> User: "Verification successful."
+    
+    == Connection ==
+    System -> User: "Connecting to Planning Department.\nPlease hold..."
+    System -> System: Routes call to Planning Department
+    System -> User: "Thank you for calling."
+else Verification failed
+    System -> User: "Verification failed.\nReturning to main menu."
+    System -> User: "Main menu:\n1 - Directory\n2 - Planning Department..."
+end
+
+deactivate System
+
+note right of System
+  Extension point: Identity verification
+  Required for sensitive department access
+  
+  Conversational principles:
+  - Cooperation: Step-by-step guidance
+  - Context: Language maintained throughout
+  - Brevity: Clear instructions
+  - Error handling with retry option
+end note
+
+@enduml

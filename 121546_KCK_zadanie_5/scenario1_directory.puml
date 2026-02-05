@@ -1,0 +1,35 @@
+@startuml
+title Scenario 1: Connect with Directory (Księgowość)
+skinparam responseMessageBelowArrow true
+skinparam boxPadding 10
+
+actor "Użytkownik" as User
+participant "Centrala\nTelefoniczna" as System
+
+== Language Selection ==
+User -> System: Dzwoni do centrali
+activate System
+System -> User: "Witamy w centrali Uniwersytetu.\nWelcome to University exchange.\nDla języka polskiego naciśnij 1.\nFor English press 2."
+User -> System: Naciska 1 (Polski)
+System -> User: "Wybrałeś język polski."
+
+== Main Menu ==
+System -> User: "Menu główne:\n1 - Księgowość\n2 - Dział Planowania\n3 - Dziekanat\n4 - Centrala\n0 - Powtórz menu"
+User -> System: Naciska 1 (Księgowość)
+
+== Connection ==
+System -> User: "Łączę z Księgowością.\nProszę czekać..."
+System -> System: Routing call to Directory department
+System -> User: "Dziękujemy za połączenie."
+deactivate System
+
+note right of System
+  Conversational principles applied:
+  - Cooperation: Clear menu options
+  - Goal orientation: Direct path to department
+  - Context awareness: Language choice remembered
+  - Brevity: Concise messages
+  - Turn-taking: Wait for user input
+end note
+
+@enduml
